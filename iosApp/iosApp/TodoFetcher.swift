@@ -9,13 +9,14 @@ import Foundation
 import app
 
 class TodoFetcher: ObservableObject {
-//    @Published var todoList: [Todo]
+    @Published var todoList = [Todo]()
 
     init() {
         Api().getTodoList(success: { (todoList) in
-            print(todoList)
+            self.todoList = todoList
         }) { (error) in
             print(error!)
         }
     }
 }
+
