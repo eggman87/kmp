@@ -1,4 +1,4 @@
-package com.raywenderlich.pokelist.shared
+package network
 
 import kotlinx.coroutines.*
 
