@@ -11,15 +11,17 @@ import kotlinx.serialization.parse
 import model.Todo
 
 @Suppress("NO_ACTUAL_FOR_EXPECT")
+@UnstableDefault
 class Api {
 
     private val httpClient = HttpClient()
+    private val url = "https://jsonplaceholder.typicode.com/todos"
 
     @UnstableDefault
     fun getTodoList(success: (List<Todo>) -> Unit, failure: (Throwable?) -> Unit){
         GlobalScope.launch(ApplicationDispatcher) {
             try {
-                val url = "https://jsonplaceholder.typicode.com/todos"
+
                 val json = httpClient.get<String>(url)
 
                 Json.nonstrict.parse(Todo.serializer().list, json)
@@ -33,5 +35,10 @@ class Api {
                 failure(ex)
             }
         }
+    }
+
+    suspend fun getTodoList(): List<Todo> {
+        val json = httpClient.get<String>(url)
+        return Json.nonstrict.parse(Todo.serializer().list, json).toList()
     }
 }

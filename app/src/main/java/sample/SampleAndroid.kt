@@ -9,7 +9,7 @@ actual class Sample {
 }
 
 actual object Platform {
-    actual val name: String = "Android"
+    actual val name: String = "Androids"
 }
 
 class MainActivity : AppCompatActivity() {
