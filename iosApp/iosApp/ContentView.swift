@@ -12,7 +12,11 @@ struct ContentView: View {
     @ObservedObject var todos = TodoFetcher()
     
     var body: some View {
-        Text("\(Proxy().proxyHello())")
+        NavigationView {
+            List (todos.todoList, id: \.title) { todo in
+                Text("\(todo.title)")
+            }.navigationBarTitle("Todo Lists")
+        }
     }
 }
 
