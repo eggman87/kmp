@@ -9,6 +9,8 @@ import SwiftUI
 import app
 
 struct ContentView: View {
+    @ObservedObject var todos = TodoFetcher()
+    
     var body: some View {
         Text("\(Proxy().proxyHello())")
     }
