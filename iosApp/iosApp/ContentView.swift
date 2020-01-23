@@ -9,7 +9,13 @@ import SwiftUI
 import app
 
 struct ContentView: View {
-    @ObservedObject var todos = TodoFetcher()
+    @ObservedObject var todos: TodoData = TodoData()
+//    @ObservedObject var todos = TodoFetcher()
+    lazy var todoViewModel = TodosViewModel.init(todoData:self.todos as TodoData)
+    
+    init() {
+        todoViewModel.loadTodos()
+    }
     
     var body: some View {
         NavigationView {

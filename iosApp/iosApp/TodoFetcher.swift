@@ -20,3 +20,15 @@ class TodoFetcher: ObservableObject {
     }
 }
 
+class TodoData: DataHolder, ObservableObject {
+    @Published var todoList = [Todo]()
+    
+    init() {
+    
+    }
+  
+    func setData(data: Any?) {
+        todoList = data as! [Todo]
+    }
+}
+
