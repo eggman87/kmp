@@ -6,8 +6,8 @@ import network.ApplicationDispatcher
 import kotlin.coroutines.CoroutineContext
 
 open class ViewModel : CoroutineScope {
-    override val coroutineContext: CoroutineContext = ApplicationDispatcher
 
+    override val coroutineContext: CoroutineContext = ApplicationDispatcher
 
     fun <T, R> CommonData<R>.loadCommonData(valueLoader: suspend ()-> T, mapper: (T)-> R) {
         val commonData = this
