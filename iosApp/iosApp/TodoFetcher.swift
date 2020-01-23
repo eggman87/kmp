@@ -20,15 +20,21 @@ class TodoFetcher: ObservableObject {
     }
 }
 
-class TodoData: DataHolder, ObservableObject {
+class TodoData: CommonData<TodoListHolder>, ObservableObject {
+    
     @Published var todoList = [Todo]()
+    @Published var isLoading = false
+    @Published var error: KotlinThrowable? 
     
-    init() {
-    
+    override func onSuccess(data: TodoListHolder?) {
+        todoList = data?.todos ?? []
     }
-  
-    func setData(data: Any?) {
-        todoList = data as! [Todo]
+    
+    override func onLoading(isLoading: Bool) {
+        self.isLoading = isLoading
+    }
+    
+    override func onError(error: KotlinThrowable) {
+        self.error = error
     }
 }
-

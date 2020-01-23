@@ -9,9 +9,10 @@ import SwiftUI
 import app
 
 struct ContentView: View {
-    @ObservedObject var todos: TodoData = TodoData()
-//    @ObservedObject var todos = TodoFetcher()
-    lazy var todoViewModel = TodosViewModel.init(todoData:self.todos as TodoData)
+    
+    @ObservedObject var todos = TodoData()
+    
+    lazy var todoViewModel = TodosViewModel.init(todoData:self.todos)
     
     init() {
         todoViewModel.loadTodos()

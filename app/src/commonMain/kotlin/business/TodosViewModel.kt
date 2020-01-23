@@ -1,7 +1,6 @@
 package business
 
 import data.TodoRepository
-import kotlinx.coroutines.launch
 import model.Todo
 
 /**
@@ -11,13 +10,13 @@ import model.Todo
  * Addition, business logic would live here. Data holder observables would be the main way to communicate
  * to the UI (especially for async stuff) but perhaps the view model can expose sync functions too.
  */
-class TodosViewModel(val todoData: DataHolder<List<Todo>>) : ViewModel(){
+class TodosViewModel(private val todoData: CommonData<TodoListHolder>) : ViewModel(){
 
     private val repo: TodoRepository = TodoRepository()
 
     fun loadTodos() {
-        launch {
-            todoData.setData(repo.getTodos())
-        }
+        todoData.loadCommonData({ repo.getTodos() }, { TodoListHolder(it) })
     }
 }
+
+data class TodoListHolder(val todos: List<Todo>)
