@@ -1,7 +1,8 @@
 package arch
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Observer
+
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import business.CommonData
 
 class AndroidCommonData<T> : CommonData<T>() {
@@ -21,6 +22,12 @@ class AndroidCommonData<T> : CommonData<T>() {
     }
 }
 
+
+//need a better way than this
+fun<T> CommonData<T>.android(): AndroidCommonData<T> {
+    return this as AndroidCommonData<T>
+}
+
 /**
  * Represents a UI that responds to loading of a resource. These use cases (success, error, and loading)
  * apply to 90% of most use cases. For other needs, observing LiveData can be done directly in
@@ -30,11 +37,6 @@ interface ResourceView<T> {
     fun showData(data: T)
     fun showLoading(isLoading: Boolean)
     fun showError(error: Throwable)
-    /**
-     * Called when a resource is not found. Optional to implement. If not overridden the default
-     * error handling will be used
-     */
-    fun showNotFound(error: Throwable) {}
 }
 
 class ResourceViewObserver<T>(private val view: ResourceView<T>) : Observer<Resource<T>> {

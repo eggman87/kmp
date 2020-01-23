@@ -10,7 +10,7 @@ import model.Todo
  * Addition, business logic would live here. Data holder observables would be the main way to communicate
  * to the UI (especially for async stuff) but perhaps the view model can expose sync functions too.
  */
-class TodosViewModel(private val todoData: CommonData<TodoListHolder>) : ViewModel(){
+class TodosViewModel(val todoData: CommonData<TodoListHolder>) : ViewModel(){
 
     private val repo: TodoRepository = TodoRepository()
 
