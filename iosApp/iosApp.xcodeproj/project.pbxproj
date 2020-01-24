@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		78446AA823D8A32700C0605F /* TodoFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78446AA723D8A32700C0605F /* TodoFetcher.swift */; };
+		7857E43923DB756000FD774F /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857E43823DB756000FD774F /* ActivityIndicator.swift */; };
 		78D7C09423D76BCE00BC024C /* app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F861D805207FA4200085E80D /* app.framework */; };
 		78D7C0D223D7733B00BC024C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7C0D123D7733B00BC024C /* ContentView.swift */; };
 		78D7C0D423D7738800BC024C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7C0D323D7738800BC024C /* SceneDelegate.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		78446AA723D8A32700C0605F /* TodoFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFetcher.swift; sourceTree = "<group>"; };
+		7857E43823DB756000FD774F /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		78D7C0D123D7733B00BC024C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		78D7C0D323D7738800BC024C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F861D7DD207FA40F0085E80D /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,7 @@
 				78D7C0D123D7733B00BC024C /* ContentView.swift */,
 				78D7C0D323D7738800BC024C /* SceneDelegate.swift */,
 				78446AA723D8A32700C0605F /* TodoFetcher.swift */,
+				7857E43823DB756000FD774F /* ActivityIndicator.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F861D7E1207FA40F0085E80D /* AppDelegate.swift in Sources */,
+				7857E43923DB756000FD774F /* ActivityIndicator.swift in Sources */,
 				78D7C0D223D7733B00BC024C /* ContentView.swift in Sources */,
 				78D7C0D423D7738800BC024C /* SceneDelegate.swift in Sources */,
 				78446AA823D8A32700C0605F /* TodoFetcher.swift in Sources */,

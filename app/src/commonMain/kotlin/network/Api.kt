@@ -20,19 +20,15 @@ class Api {
     private val log = Logger()
 
     @UnstableDefault
+    // This method is only kept for debugging demonstration on iOS side
     fun getTodoList(success: (List<Todo>) -> Unit, failure: (Throwable?) -> Unit){
         GlobalScope.launch(ApplicationDispatcher) {
             try {
-
-                val json = httpClient.get<String>(url)
+                val nonWorkingUrl = "https://jsonplaceholder.typicode.com/todosFail"
+                val json = httpClient.get<String>(nonWorkingUrl)
 
                 Json.nonstrict.parse(Todo.serializer().list, json)
                     .also(success)
-
-                // An example of failed Json parsing. To show debugging on iOS side.
-//                Json.nonstrict.parse(TodoList.serializer(), json)
-//                    .todo_entries
-//                    .also(success)
             } catch (ex: Exception) {
                 failure(ex)
             }

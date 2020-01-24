@@ -24,7 +24,8 @@ class TodoData: CommonData<TodoListHolder>, ObservableObject {
     
     @Published var todoList = [Todo]()
     @Published var isLoading = false
-    @Published var error: KotlinThrowable? 
+    @Published var error: KotlinThrowable?
+    @Published var hasError = false
     
     override func onSuccess(data: TodoListHolder?) {
         todoList = data?.todos ?? []
@@ -36,5 +37,6 @@ class TodoData: CommonData<TodoListHolder>, ObservableObject {
     
     override func onError(error: KotlinThrowable) {
         self.error = error
+        self.hasError = true
     }
 }

@@ -8,31 +8,14 @@
 import SwiftUI
 import app
 
-struct ActivityIndicator: UIViewRepresentable {
-
-    @Binding var isLoading: Bool
-
-    func makeUIView(context: Context) -> UIActivityIndicatorView {
-        return UIActivityIndicatorView()
-    }
-
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {
-        if self.isLoading{
-            uiView.startAnimating()
-        } else {
-            uiView.stopAnimating()
-        }
-    }
-}
-
 struct ContentView: View {
     
     @ObservedObject var todos = TodoData()
-    
     lazy var todoViewModel = TodosViewModel.init(todoData:self.todos)
     
     init() {
         todoViewModel.loadTodos()
+        TodoFetcher()
     }
     
     var body: some View {
@@ -41,8 +24,11 @@ struct ContentView: View {
                 ActivityIndicator(isLoading: self.$todos.isLoading)
                 List (todos.todoList, id: \.title) { todo in
                     Text("\(todo.title)")
-                }.navigationBarTitle("Todo Lists")
-            }
+                }
+                .alert(isPresented: $todos.hasError) {
+                    Alert(title: Text("Error"), message: Text("\((todos.error?.description())!)"))
+                }
+            }.navigationBarTitle("Todo Lists")
         }
     }
 }
