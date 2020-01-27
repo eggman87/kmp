@@ -12,23 +12,24 @@ struct ContentView: View {
     
     @ObservedObject var todos = TodoData()
     lazy var todoViewModel = TodosViewModel.init(todoData:self.todos)
+    let screen = UIScreen.main.bounds
     
     init() {
         todoViewModel.loadTodos()
-        TodoFetcher()
+//        TodoFetcher()
     }
-    
+
     var body: some View {
-        NavigationView {
-            VStack {
-                ActivityIndicator(isLoading: self.$todos.isLoading)
-                List (todos.todoList, id: \.title) { todo in
+        LoadingView(isLoading: self.$todos.isLoading) {
+            NavigationView {
+                List (self.todos.todoList, id: \.title) { todo in
                     Text("\(todo.title)")
                 }
-                .alert(isPresented: $todos.hasError) {
-                    Alert(title: Text("Error"), message: Text("\((todos.error?.description())!)"))
+                .alert(isPresented: self.$todos.hasError) {
+                    Alert(title: Text("Error"), message: Text("\((self.todos.error?.description())!)"))
                 }
-            }.navigationBarTitle("Todo Lists")
+                .navigationBarTitle("Todo Lists")
+            }
         }
     }
 }
