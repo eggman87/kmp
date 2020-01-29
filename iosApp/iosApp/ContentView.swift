@@ -16,7 +16,7 @@ struct ContentView: View {
     
     init() {
         todoViewModel.loadTodos()
-//        TodoFetcher()
+        TodoFetcher()
     }
 
     var body: some View {

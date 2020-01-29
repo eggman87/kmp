@@ -17,6 +17,7 @@ struct LottieView: UIViewRepresentable {
         let animationView = AnimationView()
         let animation = Animation.named(filename)
         animationView.animation = animation
+        animationView.loopMode = .loop
         return animationView
     }
 

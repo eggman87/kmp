@@ -1,5 +1,6 @@
 package data
 
+import kotlinx.coroutines.delay
 import kotlinx.serialization.UnstableDefault
 import model.Todo
 import network.Api
@@ -8,6 +9,8 @@ import network.Api
 class TodoRepository  constructor(private val api:Api = Api()) : Repository() {
 
     suspend fun getTodos(): List<Todo> {
-        return api.getTodoList()
+        delay(3000)
+        return api.
+            getTodoList()
     }
 }
