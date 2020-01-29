@@ -19,22 +19,6 @@ class Api {
     private val url = "https://jsonplaceholder.typicode.com/todos"
     private val log = Logger()
 
-    @UnstableDefault
-    // This method is only kept for debugging demonstration on iOS side
-    fun getTodoList(success: (List<Todo>) -> Unit, failure: (Throwable?) -> Unit){
-        GlobalScope.launch(ApplicationDispatcher) {
-            try {
-                val nonWorkingUrl = "https://jsonplaceholder.typicode.com/todosFail"
-                val json = httpClient.get<String>(nonWorkingUrl)
-
-                Json.nonstrict.parse(Todo.serializer().list, json)
-                    .also(success)
-            } catch (ex: Exception) {
-                failure(ex)
-            }
-        }
-    }
-
     suspend fun getTodoList(): List<Todo> {
         try {
             log.log("API", "Making api call to $url")

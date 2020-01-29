@@ -12,11 +12,9 @@ struct ContentView: View {
     
     @ObservedObject var todos = TodoData()
     lazy var todoViewModel = TodosViewModel.init(todoData:self.todos)
-    let screen = UIScreen.main.bounds
     
     init() {
         todoViewModel.loadTodos()
-        TodoFetcher()
     }
 
     var body: some View {
